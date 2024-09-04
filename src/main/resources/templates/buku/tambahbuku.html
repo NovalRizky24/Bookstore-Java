@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tambah Buku Baru</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto rounded border p-4 m-4">
+        <h2 class="text-center mb-5">Tambah Buku Baru</h2>
+        
+        <form method="post" enctype="multipart/form-data" th:object="${bukuDto}" action="/buku/tambahbuku">
+            <div class="row mb-3">
+                <label for="namabuku" class="col-sm-4 col-form-label">Nama Buku</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="namabuku" th:field="*{namabuku}">
+                    <p th:if="${#fields.hasErrors('namabuku')}" class="text-danger" th:errors="*{namabuku}"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="penulis" class="col-sm-4 col-form-label">Penulis</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="penulis" th:field="*{penulis}">
+                    <p th:if="${#fields.hasErrors('penulis')}" class="text-danger" th:errors="*{penulis}"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="harga" class="col-sm-4 col-form-label">Harga</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="harga" th:field="*{harga}">
+                    <p th:if="${#fields.hasErrors('harga')}" class="text-danger" th:errors="*{harga}"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="jumlahhalaman" class="col-sm-4 col-form-label">Jumlah Halaman</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="jumlahhalaman" th:field="*{jumlahhalaman}">
+                    <p th:if="${#fields.hasErrors('jumlahhalaman')}" class="text-danger" th:errors="*{jumlahhalaman}"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="tglterbit" class="col-sm-4 col-form-label">Tanggal Terbit</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" id="tglterbit" th:field="*{tglterbit}">
+                    <p th:if="${#fields.hasErrors('tglterbit')}" class="text-danger" th:errors="*{tglterbit}"></p>
+                </div>
+            </div>
+           <div class="row mb-3">
+    <label class="col-sm-4 col-form-label">Image</label>
+    <div class="col-sm-8">
+        <input class="form-control" type="file" th:field="${bukuDto.fileGambar}">
+        	<p th:if="${#fields.hasErrors('fileGambar')}" th:errorclass="text-danger" th:errors="${bukuDto.fileGambar}"></p>
+	    </div>
+	</div>
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" href="/buku" role="button">Batal</a>
+                </div>
+            </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+oP53VVxFfPV3Yk2w9KKkZkY3M7xD" crossorigin="anonymous"></script>
+</body>
+</html>
